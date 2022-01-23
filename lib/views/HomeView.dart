@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:notebook/components/Header.dart';
 import 'package:notebook/functions.dart';
+import 'package:notebook/views/AnciensBulletinsView.dart';
 import 'package:notebook/views/BulletinsView.dart';
 import 'package:notebook/views/NotesView.dart';
 import 'package:notebook/views/RelevesView.dart';
@@ -49,9 +50,12 @@ class _HomeViewState extends State<HomeView> {
                       pageTitle = "Anciens bulletins";
                     break;
                     case 1:
-                      pageTitle = "Relevé";
+                      pageTitle = "Bulletins";
                       break;
                     case 2:
+                      pageTitle = "Relevé";
+                      break;
+                      case 3:
                       pageTitle = "Les notes";
                       break;
                   default:
@@ -59,6 +63,8 @@ class _HomeViewState extends State<HomeView> {
                     });
               },
               children: const [
+                // Liste des anciens bulletins
+                AnciensBulletinsView(),
                 // Liste des bulletins
                 BulletinsView(),
                 // Liste des relevés
