@@ -1,42 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:notebook/functions.dart';
 
-class BulletinsView extends StatefulWidget {
-  const BulletinsView({Key? key}) : super(key: key);
+class RelevesView extends StatefulWidget {
+  const RelevesView({Key? key}) : super(key: key);
 
   @override
-  _BulletinsViewState createState() => _BulletinsViewState();
+  _RelevesViewState createState() => _RelevesViewState();
 }
 
-class _BulletinsViewState extends State<BulletinsView> {
-  // Liste des bulletins
-  List<Map> bulletins = [
-    for (var i = 0; i < 20; i++)
-      {'trimestre': 1, 'année': 3, 'année-scolaire': '2020 - 2021'},
+class _RelevesViewState extends State<RelevesView> {
+  // Liste des releves
+  List<Map> releves = [
+    //for (var i = 0; i < 20; i++)
+      //{'trimestre': 1, 'année': 3, 'année-scolaire': '2020 - 2021'},
   ];
   @override
   Widget build(BuildContext context) {
     List<double> screenSize = getScreenSize(context);
-    return bulletins.isEmpty
-        ? Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Aucun bulletin n'a été généré",
+    return releves.isEmpty ? Center(child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+      Text(
+                  "Le relevé de notes sera publié à partir du 27/02/22",
                   style: const TextStyle(
                       fontSize: 14, fontWeight: FontWeight.bold),
                 ),
-                Icon(
-                  Icons.sms_rounded,
-                  size: screenSize[0] / 1.5,
-                  color: Colors.green.withOpacity(0.5),
-                ),
-              ],
-            ),
-          )
-        :  SizedBox(
+                Icon(Icons.sms_rounded, size: screenSize[0] / 1.5, color: Colors.green.withOpacity(0.5),),
+    ],),) : SizedBox(
       height: screenSize[1] / 1.2,
       //color: Colors.red,
       child: ListView.separated(
@@ -46,7 +36,7 @@ class _BulletinsViewState extends State<BulletinsView> {
           height: 1,
           color: Colors.grey.withOpacity(0.3),
         ),
-        itemCount: bulletins.length,
+        itemCount: releves.length,
         itemBuilder: (context, index) => ListTile(
           onTap: () {
             print('Bulletin');
@@ -56,11 +46,11 @@ class _BulletinsViewState extends State<BulletinsView> {
             color: Colors.green[800],
           ),
           title: Text(
-            "Bulletin de notes - Trimestre ${bulletins[index]['trimestre']} - ${bulletins[index]['année']}A",
+            "Bulletin de notes - Trimestre ${releves[index]['trimestre']} - ${releves[index]['année']}A",
             style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
           subtitle: Text(
-            "${bulletins[index]['année-scolaire']}",
+            "${releves[index]['année-scolaire']}",
             style: const TextStyle(fontSize: 12),
           ),
         ),

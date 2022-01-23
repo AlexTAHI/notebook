@@ -17,7 +17,25 @@ class _NotesViewState extends State<NotesView> {
   @override
   Widget build(BuildContext context) {
     List<double> screenSize = getScreenSize(context);
-    return SizedBox(
+    return notes.isEmpty
+        ? Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Pas de note pour le moment",
+                  style: const TextStyle(
+                      fontSize: 14, fontWeight: FontWeight.bold),
+                ),
+                Icon(
+                  Icons.sms_rounded,
+                  size: screenSize[0] / 1.5,
+                  color: Colors.green.withOpacity(0.5),
+                ),
+              ],
+            ),
+          )
+        :  SizedBox(
       height: screenSize[1] / 1.2,
       child: ListView.separated(
         physics: const BouncingScrollPhysics(),

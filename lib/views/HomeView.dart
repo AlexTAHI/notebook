@@ -4,6 +4,7 @@ import 'package:notebook/components/Header.dart';
 import 'package:notebook/functions.dart';
 import 'package:notebook/views/BulletinsView.dart';
 import 'package:notebook/views/NotesView.dart';
+import 'package:notebook/views/RelevesView.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -48,6 +49,9 @@ class _HomeViewState extends State<HomeView> {
                       pageTitle = "Anciens bulletins";
                     break;
                     case 1:
+                      pageTitle = "Relevé";
+                      break;
+                    case 2:
                       pageTitle = "Les notes";
                       break;
                   default:
@@ -57,6 +61,8 @@ class _HomeViewState extends State<HomeView> {
               children: const [
                 // Liste des bulletins
                 BulletinsView(),
+                // Liste des relevés
+                RelevesView(),
                 // Liste des notes
                 NotesView(),
               ],
